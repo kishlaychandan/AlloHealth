@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id   Int @id @default(autoincrement())
+  title String
+  price Float
+  description String?
+  image   String
+  category String
+}
+model Doctor {
+  id            Int           @id @default(autoincrement())
+  name          String
+  specialization String
+  gender        String
+  location      String
+  availability  Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  appointments  Appointment[] // Opposite relation field
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  password     String
+  name         String
+  role     String @default("User") // "User" or "Admin"
+  appointments Appointment[] // Opposite relation field
+}
+
+model Appointment {
+  id             Int      @id @default(autoincrement())
+  doctorId       Int
+  patientId      Int
+  date           DateTime
+  status         String   @default("Scheduled") // "Scheduled", "Cancelled", "Rescheduled"
+  rescheduledAt  DateTime? // New field for rescheduled appointment date
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  issue          String?  // Reason for the appointment
+
+  doctor         Doctor   @relation(fields: [doctorId], references: [id])
+  patient        User     @relation(fields: [patientId], references: [id])
+}
+
