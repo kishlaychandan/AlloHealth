@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Front Desk System at a Clinic
 
-## Getting Started
+The **Front Desk System** is a web-based application designed to streamline patient queue and appointment management at a clinic. This system enables front desk staff to efficiently manage walk-in patients, book appointments, reschedule or cancel appointments, and track patient progress through the clinic.
 
-First, run the development server:
+---
+![Form Builder](image.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Authentication
+- Secure login functionality for front desk staff using **JWT Authentication**.
+- Role-based access control to ensure authorized actions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Queue Management
+- Add walk-in patients to the queue and assign queue numbers.
+- Update patient statuses such as **Waiting**, **With Doctor**, or **Completed**.
+- View and manage the queue in real-time for efficient clinic operations.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Appointment Management
+- View available doctors and their time slots.
+- Book, reschedule, or cancel appointments for patients.
+- Track and update appointment statuses (**Booked**, **Completed**, **Canceled**).
 
-## Learn More
+### Doctor Management
+- Add, edit, or delete doctor profiles, including:
+  - Specialization
+  - Gender
+  - Location
+  - Availability
 
-To learn more about Next.js, take a look at the following resources:
+### Search and Filter
+- Search doctors by:
+  - Specialization
+  - Location
+  - Availability
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### View Appointments
+- View all appointments for any patient or doctor.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Technology Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend
+- **NestJS**: A scalable Node.js framework for building server-side applications.
+- **JWT Authentication**: For secure login and authorization.
+- **MySQL**: Database to store user, doctor, and appointment data.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Frontend
+- **Next.js**: React framework for server-side rendering and static web pages.
+- **Tailwind CSS**: For fast and responsive UI styling.
+
+---
+
+## Key Components
+
+### Front Desk Page
+- User-friendly interface for managing doctor profiles, appointments, and queues.
+
+### Queue Management Page
+- Displays a list of patients in the queue, showing their queue number and current status.
+- Options to update patient statuses (e.g., **Waiting**, **reschedule**, **Completed**).
+
+### Appointment Management View
+- Display available doctors and their time slots.
+- Options to book, reschedule, or cancel appointments.
+
+---
+
+## Installation
+
+### Prerequisites
+- **Node.js** (v14+)
+- **MySQL** (local or hosted database)
+
+### Steps to Run the Application
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/kishlaychandan/AlloHealth
+   cd front-desk-system
